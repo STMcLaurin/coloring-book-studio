@@ -1,0 +1,3 @@
+Coloring Book Studio deployment pipeline check.
+Created 2026-09-15 after correcting Vercel build settings.
+This file can be removed after deployment verification.
