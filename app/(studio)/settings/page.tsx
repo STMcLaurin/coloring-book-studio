@@ -1,0 +1,1 @@
+export default function SettingsPage(){return <section className="hero-row compact"><div><span className="section-kicker">STUDIO PREFERENCES</span><h1>Settings</h1><p>Account, publishing defaults, integrations, and workspace preferences will be managed here.</p></div></section>}
