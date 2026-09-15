@@ -1,0 +1,1 @@
+export default function LibraryPage(){return <section className="hero-row compact"><div><span className="section-kicker">ARTWORK</span><h1>Page Library</h1><p>Your generated and uploaded coloring artwork will be organized here by book and page.</p></div></section>}
