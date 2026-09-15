@@ -1,0 +1,1 @@
+export default function PublishedPage(){return <section className="hero-row compact"><div><span className="section-kicker">PUBLISHING TRACKER</span><h1>Published</h1><p>Track where your completed books are listed, their prices, links, and publication status.</p></div></section>}
