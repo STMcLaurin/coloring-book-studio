@@ -1,0 +1,1 @@
+export default function ExportsPage(){return <section className="hero-row compact"><div><span className="section-kicker">PRODUCTION FILES</span><h1>Exports</h1><p>Completed printable PDFs, page images, and ZIP packages will appear here.</p></div></section>}
