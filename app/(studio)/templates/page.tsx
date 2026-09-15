@@ -1,0 +1,1 @@
+export default function TemplatesPage(){return <section className="hero-row compact"><div><span className="section-kicker">DESIGN STARTERS</span><h1>Templates</h1><p>Reusable page, cover, and book templates will live here.</p></div></section>}
