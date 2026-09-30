@@ -20,7 +20,7 @@ export default function Home() {
         <span><strong style={{display:'block',fontFamily:'Georgia,serif'}}>Coloring Book Studio</strong><small className="section-kicker">CREATE · DESIGN · PUBLISH</small></span>
       </Link>
       <nav style={{display:'flex',alignItems:'center',gap:10}}>
-        <Link className="outline-btn" href="/demo">View Demo</Link>
+        <Link className="outline-btn" href="/pricing">Pricing</Link><Link className="outline-btn" href="/demo">Free Demo</Link>
         <Link className="primary-btn" href="/login">Open Studio <ArrowRight size={16}/></Link>
       </nav>
     </header>
@@ -32,7 +32,7 @@ export default function Home() {
         <p style={{fontSize:18,lineHeight:1.7,color:'#706960',maxWidth:680}}>Plan pages, lock a consistent illustration style, create prompts, organize artwork, design interiors and covers, validate your book and prepare publishing assets — all from one organized studio.</p>
         <div style={{display:'flex',gap:12,flexWrap:'wrap',marginTop:30}}>
           <Link className="primary-btn" href="/demo"><Sparkles size={17}/> Explore Interactive Demo</Link>
-          <Link className="outline-btn" href="/login">Sign In</Link>
+          <Link className="outline-btn" href="/pricing">View Plans</Link><Link className="outline-btn" href="/login">Sign In</Link>
         </div>
         <div style={{display:'flex',gap:22,flexWrap:'wrap',marginTop:30,color:'#716b63',fontSize:13}}>
           <span>✓ Kids & adult books</span><span>✓ AI-assisted workflow</span><span>✓ Print-ready production</span>
