@@ -1,27 +1,5 @@
 'use server';
-
-import { redirect } from 'next/navigation';
-import { revalidatePath } from 'next/cache';
-import { createClient } from '@/lib/supabase/server';
-
-function credentials(formData: FormData) {
-  const email = String(formData.get('email') ?? '').trim();
-  const password = String(formData.get('password') ?? '');
-  if (!email || password.length < 8) redirect('/login?error=Enter+a+valid+email+and+an+8%2B+character+password');
-  return { email, password };
-}
-
-export async function login(formData: FormData) {
-  const supabase = await createClient();
-  const { error } = await supabase.auth.signInWithPassword(credentials(formData));
-  if (error) redirect(`/login?error=${encodeURIComponent(error.message)}`);
-  revalidatePath('/', 'layout');
-  redirect('/dashboard');
-}
-
-export async function signup(formData: FormData) {
-  const supabase = await createClient();
-  const { error } = await supabase.auth.signUp(credentials(formData));
-  if (error) redirect(`/login?error=${encodeURIComponent(error.message)}`);
-  redirect('/login?message=Check+your+email+to+confirm+your+account');
-}
+import {headers} from 'next/headers';import {redirect} from 'next/navigation';import {revalidatePath} from 'next/cache';import {createClient} from '@/lib/supabase/server';
+function credentials(f:FormData){const email=String(f.get('email')??'').trim().toLowerCase(),password=String(f.get('password')??'');if(!email||password.length<8)redirect('/login?error=Enter+a+valid+email+and+an+8%2B+character+password');return {email,password}}
+export async function login(f:FormData){const s=await createClient();const {error}=await s.auth.signInWithPassword(credentials(f));if(error)redirect('/login?error='+encodeURIComponent(error.message));revalidatePath('/','layout');redirect('/dashboard')}
+export async function signup(f:FormData){const {email,password}=credentials(f);const confirm=String(f.get('confirm_password')??'');if(password!==confirm)redirect('/signup?error=Passwords+do+not+match');const h=await headers(),origin=h.get('origin')||process.env.NEXT_PUBLIC_SITE_URL||'';const s=await createClient();const {data,error}=await s.auth.signUp({email,password,options:{emailRedirectTo:origin?`${origin}/auth/confirm`:undefined}});if(error)redirect('/signup?error='+encodeURIComponent(error.message));if(data.session){revalidatePath('/','layout');redirect('/dashboard')}redirect('/login?message='+encodeURIComponent('Account created. Check your email and select the confirmation link, then sign in.'))}
