@@ -1,21 +1,2 @@
-import Link from 'next/link';
-import { BookHeart } from 'lucide-react';
-import { login, signup } from './actions';
-
-export default async function LoginPage({ searchParams }: { searchParams: Promise<{ error?: string; message?: string }> }) {
-  const query = await searchParams;
-  return <main className="wizard-shell" style={{maxWidth:560, margin:'70px auto'}}>
-    <section className="wizard-card card">
-      <div className="wizard-title"><BookHeart/><div><span className="section-kicker">COLORING BOOK STUDIO</span><h1>Sign in to your studio</h1><p>Your books, page plans, styles, and prompts stay attached to your account.</p></div></div>
-      {query.error && <p className="muted" role="alert">{query.error}</p>}
-      {query.message && <p>{query.message}</p>}
-      <form className="form-grid">
-        <label className="full">Email<input name="email" type="email" autoComplete="email" required/></label>
-        <label className="full">Password<input name="password" type="password" autoComplete="current-password" minLength={8} required/></label>
-        <div className="full wizard-actions"><button className="outline-btn" formAction={signup}>Create account</button><button className="primary-btn" formAction={login}>Sign in</button></div>
-      </form>
-      <p className="muted">By signing in, you can create real projects instead of sample data.</p>
-      <Link className="text-link" href="/">Back to Coloring Book Studio</Link>
-    </section>
-  </main>;
-}
+import Link from 'next/link';import {BookHeart} from 'lucide-react';import {login} from './actions';
+export default async function LoginPage({searchParams}:{searchParams:Promise<{error?:string;message?:string}>}){const q=await searchParams;return <main className="wizard-shell" style={{maxWidth:560,margin:'70px auto'}}><section className="wizard-card card"><div className="wizard-title"><BookHeart/><div><span className="section-kicker">COLORING BOOK STUDIO</span><h1>Sign in to your studio</h1><p>Access your books, artwork, page designs and exports.</p></div></div>{q.error&&<p role="alert" style={{color:'#9b2c2c'}}>{q.error}</p>}{q.message&&<p role="status">{q.message}</p>}<form action={login} className="form-grid"><label className="full">Email<input name="email" type="email" autoComplete="email" required/></label><label className="full">Password<input name="password" type="password" autoComplete="current-password" minLength={8} required/></label><div className="full"><button className="primary-btn" style={{width:'100%',justifyContent:'center'}}>Sign In</button></div></form><p className="muted">New to Coloring Book Studio? <Link className="text-link" href="/signup">Create an account</Link></p><Link className="text-link" href="/">Back to Coloring Book Studio</Link></section></main>}
